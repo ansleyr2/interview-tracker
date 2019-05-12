@@ -27,7 +27,7 @@ Cordova
 If you want you bundle your app for using on mobile device.
 ```
 
-### Before use this project...
+### Before using this project...
 ````
 Please replace (API key) in config.xml and package.json files with your API keys.
 Follow the steps as on https://developers.google.com/maps/documentation/javascript/get-api-key   for getting your API key
