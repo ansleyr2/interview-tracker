@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Interview</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-label>{{data}}</ion-label> -->
+  <mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Details</ng-template>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Company Name" formControlName="companyName" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Designation" formControlName="designation" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date" required disabled> 
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput type="time" placeholder="Time" formControlName="time" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea rows=5 matInput placeholder="Job Description" formControlName="jobDescription"></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Location</ng-template>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Address Line" formControlName="addressLine" required >
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="City" formControlName="city" required >
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="State" formControlName="state" required >
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="ZipCode" formControlName="zipCode" required >
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="geoCodeLocation(stepper)">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Contact</ng-template>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Name" formControlName="supervisorName" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput type="tel" placeholder="Contact" formControlName="contact" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email" formControlName="email" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()" *ngIf="!service._viewMode">Reset</button>
+        <button mat-button (click)="createInterview()" *ngIf="!service._viewMode">Add</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "interviewTracker",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

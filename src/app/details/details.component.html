@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeWindow()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Snapshot</ion-label>
+    </ion-item-divider>
+
+    <ion-label padding> {{interviewDetails.designation}}</ion-label>
+    <ion-label padding>{{interviewDetails.company.name}}</ion-label>
+    <ion-label padding>{{convertReadabaleDate(interviewDetails.date)}} at {{interviewDetails.time}}</ion-label>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Address</ion-label>
+    </ion-item-divider>
+
+
+    <ion-label padding> {{interviewDetails.company.address.addressLine}}</ion-label>
+
+
+    <ion-label padding>{{interviewDetails.company.address.city}}</ion-label>
+
+
+    <ion-label padding> {{interviewDetails.company.address.state}}, {{interviewDetails.company.address.zipCode}}
+    </ion-label>
+
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Supervisors Contact</ion-label>
+    </ion-item-divider>
+
+
+    <ion-label padding> {{interviewDetails.contact.name}}</ion-label>
+
+
+    <ion-label padding> {{interviewDetails.contact.email}}</ion-label>
+
+
+    <ion-label padding>{{formatUSNumber(interviewDetails.contact.phone)}}</ion-label>
+
+  </ion-item-group>
+
+  
+  <ion-item-group *ngIf="interviewDetails.jobDescription.length>0">
+    <ion-item-divider>
+      <ion-label class="underline" (click)="presentJobDescriptionModal(interviewDetails.jobDescription)"> View Job Description</ion-label>
+    </ion-item-divider>
+
+    <!-- <ion-textarea
+    disabled
+    readonly
+    padding
+    value="{{interviewDetails.jobDescription}}">
+  </ion-textarea> -->
+  </ion-item-group> 
+</ion-content>
