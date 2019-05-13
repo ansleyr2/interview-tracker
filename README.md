@@ -3,7 +3,7 @@ Ionic 4 and Angular project(Hybrid Mobile App) to track interviews.
 Uses native plugins like google-maps and geolocator to locate places.
 
 ## Demo
-https://youtu.be/J_umFkMYmXc
+https://youtu.be/J_umFkMYmXc OR Install the interview-tracker.apk file present under the root folder on your device.
 
 ## Getting Started
 
